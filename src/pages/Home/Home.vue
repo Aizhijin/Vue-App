@@ -1,106 +1,109 @@
 <template>
-  <section class="content-item">
-    <Header :title="address.name">
+  <div ref="wraper" style="width: 100%;height: 100%">
+    <section class="content-item">
+      <Header :title="address.name">
       <span class="item-top-search" slot="left">
         <i @click="$router.replace('/search')" class="iconfont iconsousuo"></i>
       </span>
-      <span class="item-top-login" slot="right">
+        <span class="item-top-login" slot="right">
         <span v-if="!user._id" @click="goToLogin">登录|注册</span>
         <i v-else class="iconfont icongeren" @click="$router.push('/profile')"></i>
       </span>
-    </Header>
+      </Header>
 
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <ul class="swiper-List">
-            <li>
-              <img src="../../assets/images/nav/1.jpg"/>
-              <span>甜品饮品</span>
-            </li>
-            <li>
-              <img src="../../assets/images/nav/2.jpg"/>
-              <span>商超便利</span>
-            </li>
-            <li>
-              <img src="../../assets/images/nav/3.jpg"/>
-              <span>美食</span>
-            </li>
-            <li>
-              <img src="../../assets/images/nav/4.jpg"/>
-              <span>简餐</span>
-            </li>
-            <li>
-              <img src="../../assets/images/nav/5.jpg"/>
-              <span>新店特惠</span>
-            </li>
-            <li>
-              <img src="../../assets/images/nav/6.jpg"/>
-              <span>准时达</span>
-            </li>
-            <li>
-              <img src="../../assets/images/nav/7.jpg"/>
-              <span>预定早餐</span>
-            </li>
-            <li>
-              <img src="../../assets/images/nav/8.jpg"/>
-              <span>土豪推荐</span>
-            </li>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <ul class="swiper-List">
+              <li>
+                <img src="../../assets/images/nav/1.jpg"/>
+                <span>甜品饮品</span>
+              </li>
+              <li>
+                <img src="../../assets/images/nav/2.jpg"/>
+                <span>商超便利</span>
+              </li>
+              <li>
+                <img src="../../assets/images/nav/3.jpg"/>
+                <span>美食</span>
+              </li>
+              <li>
+                <img src="../../assets/images/nav/4.jpg"/>
+                <span>简餐</span>
+              </li>
+              <li>
+                <img src="../../assets/images/nav/5.jpg"/>
+                <span>新店特惠</span>
+              </li>
+              <li>
+                <img src="../../assets/images/nav/6.jpg"/>
+                <span>准时达</span>
+              </li>
+              <li>
+                <img src="../../assets/images/nav/7.jpg"/>
+                <span>预定早餐</span>
+              </li>
+              <li>
+                <img src="../../assets/images/nav/8.jpg"/>
+                <span>土豪推荐</span>
+              </li>
 
-          </ul>
+            </ul>
+          </div>
+          <div class="swiper-slide">
+            <ul class="swiper-List">
+              <li>
+                <img src="../../assets/images/nav/9.jpg"/>
+                <span>甜品饮品</span>
+              </li>
+              <li>
+                <img src="../../assets/images/nav/10.jpg"/>
+                <span>商超便利</span>
+              </li>
+              <li>
+                <img src="../../assets/images/nav/11.jpg"/>
+                <span>美食</span>
+              </li>
+              <li>
+                <img src="../../assets/images/nav/12.jpg"/>
+                <span>简餐</span>
+              </li>
+              <li>
+                <img src="../../assets/images/nav/13.jpg"/>
+                <span>新店特惠</span>
+              </li>
+              <li>
+                <img src="../../assets/images/nav/14.jpg"/>
+                <span>准时达</span>
+              </li>
+              <li>
+                <img src="../../assets/images/nav/1.jpg"/>
+                <span>预定早餐</span>
+              </li>
+              <li>
+                <img src="../../assets/images/nav/2.jpg"/>
+                <span>土豪推荐</span>
+              </li>
+
+            </ul>
+          </div>
         </div>
-        <div class="swiper-slide">
-          <ul class="swiper-List">
-            <li>
-              <img src="../../assets/images/nav/9.jpg"/>
-              <span>甜品饮品</span>
-            </li>
-            <li>
-              <img src="../../assets/images/nav/10.jpg"/>
-              <span>商超便利</span>
-            </li>
-            <li>
-              <img src="../../assets/images/nav/11.jpg"/>
-              <span>美食</span>
-            </li>
-            <li>
-              <img src="../../assets/images/nav/12.jpg"/>
-              <span>简餐</span>
-            </li>
-            <li>
-              <img src="../../assets/images/nav/13.jpg"/>
-              <span>新店特惠</span>
-            </li>
-            <li>
-              <img src="../../assets/images/nav/14.jpg"/>
-              <span>准时达</span>
-            </li>
-            <li>
-              <img src="../../assets/images/nav/1.jpg"/>
-              <span>预定早餐</span>
-            </li>
-            <li>
-              <img src="../../assets/images/nav/2.jpg"/>
-              <span>土豪推荐</span>
-            </li>
+        <!-- 如果需要分页器 -->
+        <div id="fenye" class="swiper-pagination"></div>
+      </div>
 
-          </ul>
+      <div class="content-item-shopList">
+        <div class="shop-header">
+          <i class="iconfont icon-xuanxiang"></i>
+          <span>附近商家</span>
         </div>
+        <ShopList/>
       </div>
-      <!-- 如果需要分页器 -->
-      <div id="fenye" class="swiper-pagination"></div>
-    </div>
-
-    <div class="content-item-shopList">
-      <div class="shop-header">
-        <i class="iconfont icon-xuanxiang"></i>
-        <span>附近商家</span>
-      </div>
-      <ShopList/>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 <script>
+  import BScroll from 'better-scroll'
   import {mapState} from 'vuex'
   import Swiper from 'swiper'
   import ShopList from '../../components/ShopList/ShopList'
@@ -133,6 +136,9 @@
         pagination: {
           el: '.swiper-pagination'
         }
+      })
+      this.$nextTick(() => {
+        this.scroll = new BScroll(this.$refs.wraper, {click: true, scrollbar: true})
       })
     }
   }

@@ -27,7 +27,7 @@
     left 0
     top 0
     display block
-    margin-bottom 49px
+    padding-bottom 49px
     .item-top
       position fixed
       top 0
