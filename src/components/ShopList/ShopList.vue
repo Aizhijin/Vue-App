@@ -39,7 +39,7 @@
     computed: {
       ...mapState({
         shops: state => state.home.shops
-      }) // 读取值
+      })
     },
     mounted () {
       this.$store.dispatch('getShopsList') // 分发方法（事件类似）
