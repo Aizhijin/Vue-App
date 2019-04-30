@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <router-view/>
+      <router-view/>
     <Footer v-show="$route.meta.isShowFooter"/>
   </div>
 </template>
@@ -10,6 +10,7 @@
   export default {
     name: 'App',
     mounted () {
+      this.$store.dispatch('getAddress')
       this.$store.dispatch('getUser')
     },
     components: {

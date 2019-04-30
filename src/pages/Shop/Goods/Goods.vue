@@ -32,7 +32,7 @@
                   <span class="old" v-if="food.oldPrice">￥{{food.oldPrice}}</span>
                 </div>
                 <div class="cartcontrol-wrapper">
-                  CartControl组件
+                  <CartControl :food="food"/>
                 </div>
               </div>
             </li>
@@ -40,12 +40,17 @@
         </li>
       </ul>
     </div>
+    <ShopCart/>
+    <Food v-show="false"/>
   </div>
 </template>
 
 <script>
   import {mapState} from 'vuex'
   import BScroll from 'better-scroll'
+  import CartControl from '../../../components/CartControl/CartControl'
+  import ShopCart from '../../../components/ShopCart/ShopCart'
+  import Food from '../../../components/Food/Food'
 
   export default {
     data () {
@@ -53,6 +58,11 @@
         scrollY: 0,
         tops: []
       }
+    },
+    components: {
+      CartControl,
+      ShopCart,
+      Food
     },
     computed: {
       ...mapState({
@@ -71,14 +81,14 @@
       }
     },
     methods: {
+      //到达指定元素的位置
       goCurrent (index) {
         const top = this.tops[index] + 100
         this.scrollY = top
         this.scrollFoods.scrollTo(0, -top, 400)
       },
-      createFoodsScroll () {
-        //创建右边foods实例
-        this.scrollFoods = new BScroll('.foods-wrapper', {probeType: 1, swipeTime: 1500})
+      _createFoodsScroll () {
+        //获取右边滚动食品列表top值
         const tops = []
         let top = 0
         tops.push(top - 100)
@@ -89,6 +99,7 @@
           tops.push(top - 100)
         })
         this.tops = tops
+
         //绑定食品列表滚动事件
         this.scrollFoods.on('scroll', ({x, y}) => {
           this.scrollY = Math.abs(y)
@@ -99,12 +110,18 @@
       }
     },
     mounted () {
+      //创建右边foods实例
+      this.scrollFoods = new BScroll('.foods-wrapper', {click: true, probeType: 1, swipeTime: 1500})
+      //创建左边分类菜单实例
       this.scrollMenu = new BScroll('.menu-wrapper', {click: true})
+      if (this.goods.length) {
+        this._createFoodsScroll()
+      }
     },
     watch: {
       goods () {
         this.$nextTick(() => {
-          this.createFoodsScroll()
+          this._createFoodsScroll()
         })
       }
     }

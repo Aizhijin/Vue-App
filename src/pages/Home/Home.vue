@@ -127,7 +127,6 @@
       })
     },
     async mounted () {
-      this.$store.dispatch('getAddress')
       this.$store.dispatch('getCatgoryList')
       /* eslint-disable no-new */
       new Swiper('.swiper-container', {
@@ -138,7 +137,10 @@
         }
       })
       this.$nextTick(() => {
-        this.scroll = new BScroll(this.$refs.wraper, {click: true, scrollbar: true})
+        this.scroll = new BScroll(this.$refs.wraper, {click: true, scrollbar: true, probeType: 1})
+        this.scroll.on('scrollEnd', () => {
+
+        })
       })
     }
   }

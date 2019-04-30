@@ -64,10 +64,7 @@ export default [
         path: '/',
         redirect: '/shop/goods'
       }
-    ],
-    meta: {
-      isShowFooter: false
-    }
+    ]
   },
   {
     path: '/',

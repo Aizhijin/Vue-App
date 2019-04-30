@@ -41,6 +41,7 @@ const actions = {
 //操作状态的直接方法
 const mutations = {
   [RECEIVE_ADDRESS] (state, address) {
+    console.log('getCatgoryList')
     state.address = address
   },
   [RECEIVE_CATEGORYS] (state, categorys) {
